@@ -14,6 +14,11 @@ public class Curriculum {
     @Column
     private String description;
 
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
+    private Course course;
+
     public Long getId() {
         return id;
     }
@@ -24,5 +29,13 @@ public class Curriculum {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

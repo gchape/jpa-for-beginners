@@ -2,6 +2,9 @@ package io.github.gchape.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "professor")
 public class Professor {
@@ -16,6 +19,9 @@ public class Professor {
 
     @Column
     private String lastname;
+
+    @OneToMany(mappedBy = "professor")
+    private Set<Course> courses = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -35,5 +41,13 @@ public class Professor {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }

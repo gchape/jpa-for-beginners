@@ -3,6 +3,8 @@ package io.github.gchape.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -21,6 +23,16 @@ public class Course {
 
     @Column
     private LocalDate startdate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
+
+    @ManyToMany
+    private Set<Student> students = new HashSet<>();
+
+    @OneToOne(mappedBy = "course")
+    private Curriculum curriculum;
 
     public LocalDate getEnddate() {
         return enddate;
@@ -48,5 +60,21 @@ public class Course {
 
     public Long getId() {
         return id;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 }

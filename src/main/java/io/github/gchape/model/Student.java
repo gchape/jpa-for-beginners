@@ -2,6 +2,9 @@ package io.github.gchape.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "student")
 public class Student {
@@ -20,6 +23,9 @@ public class Student {
     @Column
     @Enumerated(EnumType.ORDINAL)
     private StudentState state;
+
+    @ManyToMany(mappedBy = "students")
+    private Set<Course> courses = new HashSet<>();
 
     public StudentState getState() {
         return state;
