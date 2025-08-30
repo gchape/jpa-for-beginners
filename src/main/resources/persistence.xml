@@ -9,6 +9,10 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- List of managed entity classes -->
+        <class>io.github.gchape.model.Professor</class>
+        <class>io.github.gchape.model.Course</class>
+        <class>io.github.gchape.model.Curriculum</class>
+        <class>io.github.gchape.model.Student</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <!-- Database connection properties -->
